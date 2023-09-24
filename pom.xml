@@ -24,6 +24,7 @@
         <junit-jupiter.version>5.10.0</junit-jupiter.version>
         <junit.platform.version>1.9.1</junit.platform.version>
         <mockito.version>5.5.0</mockito.version>
+        <google.truth.version>1.1.5</google.truth.version>
     </properties>
 
     <dependencyManagement>
@@ -73,6 +74,12 @@
             <groupId>org.mockito</groupId>
             <artifactId>mockito-core</artifactId>
             <version>${mockito.version}</version> <!--$NO-MVN-MAN-VER$-->
+            <scope>test</scope>
+        </dependency>
+        <dependency>
+            <groupId>com.google.truth</groupId>
+            <artifactId>truth</artifactId>
+            <version>${google.truth.version}</version>
             <scope>test</scope>
         </dependency>
         <!-- End Unit tests related Libraries -->
