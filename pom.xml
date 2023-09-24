@@ -11,8 +11,10 @@
     <url>http://maven.apache.org</url>
 
     <modules>
+        <module>limq-marker-api</module>
         <module>limq-marker-server</module>
     </modules>
+
     <properties>
         <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
         <!-- Maven Plugins -->
@@ -26,6 +28,14 @@
 
     <dependencyManagement>
         <dependencies>
+            <dependency>
+                <groupId>org.springframework</groupId>
+                <artifactId>spring-framework-bom</artifactId>
+                <version>6.0.11</version>
+                <type>pom</type>
+                <scope>import</scope>
+            </dependency>
+
             <!-- Unit tests related dependencies -->
             <dependency>
                 <groupId>org.junit</groupId>
