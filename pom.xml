@@ -13,6 +13,7 @@
     <modules>
         <module>limq-marker-api</module>
         <module>limq-marker-server</module>
+        <module>limq-marker-entities</module>
     </modules>
 
     <properties>
