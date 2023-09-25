@@ -7,6 +7,7 @@ import java.util.Objects;
 public class Season {
     private String id;
     private LocalDateTime startDate;
+    private List<Team> teams;
     private List<Match> matchList;
 
     public String getId() {
@@ -25,6 +26,14 @@ public class Season {
         this.startDate = startDate;
     }
 
+    public List<Team> getTeams() {
+        return teams;
+    }
+
+    public void setTeams(List<Team> teams) {
+        this.teams = teams;
+    }
+
     public List<Match> getMatchList() {
         return matchList;
     }
@@ -38,12 +47,12 @@ public class Season {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Season season = (Season) o;
-        return Objects.equals(id, season.id) && Objects.equals(startDate, season.startDate) && Objects.equals(matchList, season.matchList);
+        return Objects.equals(id, season.id) && Objects.equals(startDate, season.startDate) && Objects.equals(teams, season.teams) && Objects.equals(matchList, season.matchList);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, startDate, matchList);
+        return Objects.hash(id, startDate, teams, matchList);
     }
 
     @Override
@@ -51,6 +60,7 @@ public class Season {
         return "Season{" +
                 "id='" + id + '\'' +
                 ", startDate=" + startDate +
+                ", teams=" + teams +
                 ", matchList=" + matchList +
                 '}';
     }
