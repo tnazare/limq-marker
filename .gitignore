@@ -1,0 +1,18 @@
+target/**
+*/target/**
+.cache
+.idea
+.metadata
+.settings
+*.class
+*.classpath
+*.iml
+*.eml
+*.orig
+*.jar
+*.versionsBackup
+*.project
+**/native-libs
+
+# For java version control on Ubuntu with jenv
+.java-version
