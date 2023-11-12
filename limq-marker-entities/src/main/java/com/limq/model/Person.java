@@ -1,12 +1,19 @@
-package com.limq.entities;
+package com.limq.model;
 
+
+import jakarta.persistence.*;
 
 import java.util.Objects;
 
+@Entity
+@Table(name = "person")
 public class Person {
-
+    @Id
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
+    @Column(name = "first_name")
     private String firstName;
+    @Column(name = "last_name")
     private String lastName;
 
     public String getId() {
@@ -49,9 +56,9 @@ public class Person {
     @Override
     public String toString() {
         return "Person{" +
-                "id='" + id + '\'' +
-                ", firstName='" + firstName + '\'' +
-                ", lastName='" + lastName + '\'' +
-                '}';
+            "id='" + id + '\'' +
+            ", firstName='" + firstName + '\'' +
+            ", lastName='" + lastName + '\'' +
+            '}';
     }
 }

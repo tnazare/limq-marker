@@ -14,6 +14,7 @@
         <module>limq-marker-api</module>
         <module>limq-marker-server</module>
         <module>limq-marker-entities</module>
+        <module>limq-marker-repositories</module>
     </modules>
 
     <properties>
