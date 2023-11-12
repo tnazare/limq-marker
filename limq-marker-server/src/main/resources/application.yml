@@ -1,27 +1,27 @@
 spring:
-  jpa:
-    show-sql: 'true'
-    hibernate:
-      ddl-auto: create
-    properties:
-      hibernate:
-        dialect: org.hibernate.dialect.PostgreSQLDialect
-        format_sql: 'true'
-        default_schema: limq
-  datasource:
-    password: fautlentendrepourlevoir
-    username: admin
-    url: jdbc:postgresql://localhost:5432/postgres?currentSchema=limq
-  sql:
-    init:
-      mode: always
-      continue-on-error: 'true'
-  flyway:
-    schemas: limq
-  profiles:
-    active: '@spring.profiles.active@'
+    jpa:
+        show-sql: 'true'
+        hibernate:
+            ddl-auto: create
+        properties:
+            hibernate:
+                dialect: org.hibernate.dialect.PostgreSQLDialect
+                format_sql: 'true'
+                default_schema: limq
+    datasource:
+        password: fautlentendrepourlevoir
+        username: admin
+        url: jdbc:postgresql://localhost:5432/postgres?currentSchema=limq
+    sql:
+        init:
+            mode: always
+            continue-on-error: 'true'
+    flyway:
+        schemas: limq
+    profiles:
+        active: '@spring.profiles.active@'
 management:
-  endpoints:
-    web:
-      base-path: /
+    endpoints:
+        web:
+            base-path: /
 server.port: 8080

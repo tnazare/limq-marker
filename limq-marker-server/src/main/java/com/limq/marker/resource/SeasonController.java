@@ -1,19 +1,18 @@
 package com.limq.marker.resource;
 
-import com.limq.api.SeasonApi;
-import com.limq.model.Person;
-import com.limq.model.Season;
-import com.limq.model.Team;
-import com.limq.repositories.SeasonRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
+import static org.springframework.http.ResponseEntity.noContent;
+import static org.springframework.http.ResponseEntity.notFound;
+import static org.springframework.http.ResponseEntity.ok;
 
+import com.limq.api.SeasonApi;
+import com.limq.model.Season;
+import com.limq.repositories.SeasonRepository;
 import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
-
-import static org.springframework.http.ResponseEntity.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 @Component
 public class SeasonController implements SeasonApi {
@@ -33,7 +32,7 @@ public class SeasonController implements SeasonApi {
     @Override
     public ResponseEntity read(UUID id) {
         Optional<Season> season = seasonRepository.findById(id);
-        if (season.isPresent()){
+        if (season.isPresent()) {
             return ok(season.get());
         }
         return notFound().build();
@@ -42,7 +41,7 @@ public class SeasonController implements SeasonApi {
     @Override
     public ResponseEntity update(UUID id, Season updatedSeason) {
         Optional<Season> currentSeason = seasonRepository.findById(id);
-        if (currentSeason.isPresent()){
+        if (currentSeason.isPresent()) {
             return ok(seasonRepository.save(updatedSeason));
         }
         return notFound().build();
@@ -51,7 +50,7 @@ public class SeasonController implements SeasonApi {
     @Override
     public ResponseEntity delete(UUID id) {
         Optional<Season> currentSeason = seasonRepository.findById(id);
-        if (currentSeason.isPresent()){
+        if (currentSeason.isPresent()) {
             seasonRepository.delete(currentSeason.get());
             return noContent().build();
         }

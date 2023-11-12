@@ -1,14 +1,24 @@
 package com.limq.model;
 
 
-import jakarta.persistence.*;
-
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToMany;
+import jakarta.persistence.ManyToOne;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
 
 @Entity
-@Table(name="match")
+@Table(name = "match")
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
@@ -100,8 +110,12 @@ public class Match {
 
     @Override
     public boolean equals(Object o) {
-        if (this == o) return true;
-        if (o == null || getClass() != o.getClass()) return false;
+        if (this == o) {
+            return true;
+        }
+        if (o == null || getClass() != o.getClass()) {
+            return false;
+        }
         Match match = (Match) o;
         return Objects.equals(id, match.id) && Objects.equals(date, match.date) && Objects.equals(hosts, match.hosts) && Objects.equals(judges, match.judges) && Objects.equals(referee, match.referee) && Objects.equals(statistician, match.statistician) && Objects.equals(improvisations, match.improvisations) && Objects.equals(matchPlayers, match.matchPlayers);
     }

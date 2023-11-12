@@ -1,17 +1,18 @@
 package com.limq.marker.resource;
 
+import static org.springframework.http.ResponseEntity.noContent;
+import static org.springframework.http.ResponseEntity.notFound;
+import static org.springframework.http.ResponseEntity.ok;
+
 import com.limq.api.MatchApi;
 import com.limq.model.Match;
 import com.limq.repositories.MatchRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
-
-import static org.springframework.http.ResponseEntity.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 @Component
 public class MatchController implements MatchApi {
@@ -31,7 +32,7 @@ public class MatchController implements MatchApi {
     @Override
     public ResponseEntity read(UUID id) {
         Optional<Match> match = matchRepository.findById(id);
-        if (match.isPresent()){
+        if (match.isPresent()) {
             return ok(match.get());
         }
         return notFound().build();
@@ -40,7 +41,7 @@ public class MatchController implements MatchApi {
     @Override
     public ResponseEntity update(UUID id, Match updatedMatch) {
         Optional<Match> currentMatch = matchRepository.findById(id);
-        if (currentMatch.isPresent()){
+        if (currentMatch.isPresent()) {
             return ok(matchRepository.save(updatedMatch));
         }
         return notFound().build();
@@ -49,7 +50,7 @@ public class MatchController implements MatchApi {
     @Override
     public ResponseEntity delete(UUID id) {
         Optional<Match> currentMatch = matchRepository.findById(id);
-        if (currentMatch.isPresent()){
+        if (currentMatch.isPresent()) {
             matchRepository.delete(currentMatch.get());
             return noContent().build();
         }

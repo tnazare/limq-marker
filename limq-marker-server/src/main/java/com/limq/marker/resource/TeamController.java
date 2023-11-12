@@ -1,18 +1,18 @@
 package com.limq.marker.resource;
 
+import static org.springframework.http.ResponseEntity.noContent;
+import static org.springframework.http.ResponseEntity.notFound;
+import static org.springframework.http.ResponseEntity.ok;
+
 import com.limq.api.TeamApi;
-import com.limq.model.Person;
 import com.limq.model.Team;
 import com.limq.repositories.TeamRepository;
-import org.springframework.beans.factory.annotation.Autowired;
-import org.springframework.http.ResponseEntity;
-import org.springframework.stereotype.Component;
-
 import java.util.Collection;
 import java.util.Optional;
 import java.util.UUID;
-
-import static org.springframework.http.ResponseEntity.*;
+import org.springframework.beans.factory.annotation.Autowired;
+import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 @Component
 public class TeamController implements TeamApi {
@@ -32,7 +32,7 @@ public class TeamController implements TeamApi {
     @Override
     public ResponseEntity read(UUID id) {
         Optional<Team> team = teamRepository.findById(id);
-        if (team.isPresent()){
+        if (team.isPresent()) {
             return ok(team.get());
         }
         return notFound().build();
@@ -41,7 +41,7 @@ public class TeamController implements TeamApi {
     @Override
     public ResponseEntity update(UUID id, Team updatedTeam) {
         Optional<Team> currentTeam = teamRepository.findById(id);
-        if (currentTeam.isPresent()){
+        if (currentTeam.isPresent()) {
             return ok(teamRepository.save(updatedTeam));
         }
         return notFound().build();
@@ -50,7 +50,7 @@ public class TeamController implements TeamApi {
     @Override
     public ResponseEntity delete(UUID id) {
         Optional<Team> currentTeam = teamRepository.findById(id);
-        if (currentTeam.isPresent()){
+        if (currentTeam.isPresent()) {
             teamRepository.delete(currentTeam.get());
             return noContent().build();
         }
