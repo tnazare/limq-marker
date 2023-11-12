@@ -1,0 +1,570 @@
+{
+	"info": {
+		"_postman_id": "1eb1fc95-5f1c-44f3-8ac1-88bf8c4724fb",
+		"name": "limq-marker-api",
+		"schema": "https://schema.getpostman.com/json/collection/v2.1.0/collection.json"
+	},
+	"item": [
+		{
+			"name": "person",
+			"item": [
+				{
+					"name": "create person",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"frédérick\",\n    \"lastName\": \"desroches\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/persons",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update person",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"firstName\": \"andrée\",\n    \"lastName\": \"bilodeau\",\n    \"id\": \"98e24ce3-5816-437f-ad78-4a7a6f3ca760\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/persons/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"persons",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete person",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/persons/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"persons",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/persons/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"persons",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list person",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/persons",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"persons"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "team",
+			"item": [
+				{
+					"name": "create team",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"name\": \"Les cinéma Le Clap\",\n    \"color\": \"RED\",\n    \"members\": [\n        {\n            \"id\": \"1eb96be3-deb1-4ca6-a4e8-2a1017b0df5c\",\n            \"firstName\": \"andrée\",\n            \"lastName\": \"bilodeau\"\n        },\n        {\n            \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n            \"firstName\": \"jérémie\",\n            \"lastName\": \"carrier\"\n        },\n        {\n            \"id\": \"62b465ec-22f1-4cd9-b9a0-6c5cb3d5bbca\",\n            \"firstName\": \"patricia\",\n            \"lastName\": \"deslauriers\"\n        },\n        {\n            \"id\": \"8e596c49-755d-406a-a275-d4082dc95140\",\n            \"firstName\": \"frédérick\",\n            \"lastName\": \"desroches\"\n        }\n    ]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/teams",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update team",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"d273fca1-a871-4e98-a4e7-ce1ab347bfb0\",\n    \"season\": null,\n    \"color\": \"RED\",\n    \"members\": [\n        {\n            \"id\": \"1eb96be3-deb1-4ca6-a4e8-2a1017b0df5c\",\n            \"firstName\": \"andrée\",\n            \"lastName\": \"bilodeau\"\n        },\n        {\n            \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n            \"firstName\": \"jérémie\",\n            \"lastName\": \"carrier\"\n        },\n        {\n            \"id\": \"62b465ec-22f1-4cd9-b9a0-6c5cb3d5bbca\",\n            \"firstName\": \"patricia\",\n            \"lastName\": \"deslauriers\"\n        },\n        {\n            \"id\": \"8e596c49-755d-406a-a275-d4082dc95140\",\n            \"firstName\": \"frédérick\",\n            \"lastName\": \"desroches\"\n        }\n    ],\n    \"name\": \"Les cinéma Le Clap\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/teams/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"teams",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete team",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/teams/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"teams",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read team",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/teams/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"teams",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list team",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/teams",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"teams"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "season",
+			"item": [
+				{
+					"name": "create season",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2023-10-02T00:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/seasons",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"seasons"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update season",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2023-10-02T00:00:00\",\n    \"id\": \"99e24ce3-5816-437f-ad78-4a7a6f3ca760\",\n    \"teams\": [],\n    \"matches\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/seasons/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"seasons",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete season",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/seasons/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"seasons",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read season",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/seasons/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"seasons",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list season",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/seasons",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"seasons"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "improvisation",
+			"item": [
+				{
+					"name": "create improvisation",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"startDate\": \"2023-10-02T00:00:00\"\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/improvisations",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"improvisations"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update improvisation",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"9f74b49e-88f2-4375-baa1-1b77ec426d00\",\n    \"period\": 0,\n    \"improvisationNumber\": 0,\n    \"improvisationType\": \"COMPARED\",\n    \"improvisationTeamLeft\": null,\n    \"improvisationTeamRight\": null,\n    \"penaltyList\": [],\n    \"winningTeam\": null,\n    \"exAequo\": false\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/improvisations/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"improvisations",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete improvisation",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/improvisations/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"improvisations",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read improvisation",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/improvisations/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"improvisations",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list seasons",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/improvisations",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"improvisations"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		},
+		{
+			"name": "match",
+			"item": [
+				{
+					"name": "create match",
+					"request": {
+						"method": "POST",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"date\": \"2023-10-02T00:00:00\",\n    \"hosts\": [\n        {\n            \"id\": \"1eb96be3-deb1-4ca6-a4e8-2a1017b0df5c\",\n            \"firstName\": \"andrée\",\n            \"lastName\": \"bilodeau\"\n        },\n        {\n            \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n            \"firstName\": \"jérémie\",\n            \"lastName\": \"carrier\"\n        }\n    ],\n    \"judges\": [\n        {\n            \"id\": \"1eb96be3-deb1-4ca6-a4e8-2a1017b0df5c\",\n            \"firstName\": \"andrée\",\n            \"lastName\": \"bilodeau\"\n        },\n        {\n            \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n            \"firstName\": \"jérémie\",\n            \"lastName\": \"carrier\"\n        }\n    ],\n    \"referee\": {\n        \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n        \"firstName\": \"jérémie\",\n        \"lastName\": \"carrier\"\n    },\n    \"statistician\": {\n        \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n        \"firstName\": \"jérémie\",\n        \"lastName\": \"carrier\"\n    },\n    \"improvisations\": [],\n    \"matchPlayers\":[]\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/matches",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"matches"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "update match",
+					"request": {
+						"method": "PUT",
+						"header": [],
+						"body": {
+							"mode": "raw",
+							"raw": "{\n    \"id\": \"728b5056-16e3-4c87-85a7-952e82e03420\",\n    \"date\": \"2023-10-02T00:00:00\",\n    \"hosts\": [\n        {\n            \"id\": \"1eb96be3-deb1-4ca6-a4e8-2a1017b0df5c\",\n            \"firstName\": \"andrée\",\n            \"lastName\": \"bilodeau\"\n        },\n        {\n            \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n            \"firstName\": \"jérémie\",\n            \"lastName\": \"carrier\"\n        }\n    ],\n    \"judges\": [\n        {\n            \"id\": \"1eb96be3-deb1-4ca6-a4e8-2a1017b0df5c\",\n            \"firstName\": \"andrée\",\n            \"lastName\": \"bilodeau\"\n        },\n        {\n            \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n            \"firstName\": \"jérémie\",\n            \"lastName\": \"carrier\"\n        }\n    ],\n    \"referee\": {\n        \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n        \"firstName\": \"jérémie\",\n        \"lastName\": \"carrier\"\n    },\n    \"statistician\": {\n        \"id\": \"66ab86f2-80aa-46fa-a037-484821295d38\",\n        \"firstName\": \"jérémie\",\n        \"lastName\": \"carrier\"\n    },\n    \"improvisations\": [],\n    \"matchPlayers\": []\n}",
+							"options": {
+								"raw": {
+									"language": "json"
+								}
+							}
+						},
+						"url": {
+							"raw": "{{backend-url}}/matches/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"matches",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "Delete match",
+					"request": {
+						"method": "DELETE",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/matches/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"matches",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "read match",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/matches/f3bc6271-1ab4-49be-ba0e-9a360ae637d4",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"matches",
+								"f3bc6271-1ab4-49be-ba0e-9a360ae637d4"
+							]
+						}
+					},
+					"response": []
+				},
+				{
+					"name": "list matches",
+					"request": {
+						"method": "GET",
+						"header": [],
+						"url": {
+							"raw": "{{backend-url}}/matches",
+							"host": [
+								"{{backend-url}}"
+							],
+							"path": [
+								"matches"
+							]
+						}
+					},
+					"response": []
+				}
+			],
+			"protocolProfileBehavior": {}
+		}
+	],
+	"protocolProfileBehavior": {}
+}
