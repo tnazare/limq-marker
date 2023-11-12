@@ -9,17 +9,17 @@ import java.util.Objects;
 @Table(name = "team")
 public class Team {
     @Id
-    @GeneratedValue
+    @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "season_id", updatable = false)
     private Season season;
     @Column(name = "color")
     private TeamColor color;
     @Column(name = "name")
-    private String Name;
+    private String name;
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "season_id", updatable = false)
+    @JoinColumn(name = "team_id", updatable = true)
     private List<Person> members;
 
     public String getId() {
@@ -47,11 +47,11 @@ public class Team {
     }
 
     public String getName() {
-        return Name;
+        return name;
     }
 
     public void setName(String name) {
-        Name = name;
+        this.name = name;
     }
 
     public List<Person> getMembers() {
@@ -67,12 +67,12 @@ public class Team {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Team team = (Team) o;
-        return Objects.equals(id, team.id) && Objects.equals(season, team.season) && color == team.color && Objects.equals(Name, team.Name) && Objects.equals(members, team.members);
+        return Objects.equals(id, team.id) && Objects.equals(season, team.season) && color == team.color && Objects.equals(name, team.name) && Objects.equals(members, team.members);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, season, color, Name, members);
+        return Objects.hash(id, season, color, name, members);
     }
 
     @Override
@@ -81,7 +81,7 @@ public class Team {
             "id='" + id + '\'' +
             ", season=" + season +
             ", color=" + color +
-            ", Name='" + Name + '\'' +
+            ", Name='" + name + '\'' +
             ", members=" + members +
             '}';
     }

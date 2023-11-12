@@ -14,10 +14,10 @@ public class Season {
     private String id;
     @Column(name = "start_date")
     private LocalDateTime startDate;
-    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "improvisation_id", updatable = false)
     private List<Team> teams;
-    @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "improvisation_id", updatable = false)
     private List<Match> matches;
 

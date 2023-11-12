@@ -5,6 +5,7 @@ import com.limq.model.Person;
 import com.limq.repositories.PersonRepository;
 import org.springframework.beans.factory.annotation.Autowired;
 import org.springframework.http.ResponseEntity;
+import org.springframework.stereotype.Component;
 
 import java.util.Collection;
 import java.util.Optional;
@@ -12,9 +13,10 @@ import java.util.UUID;
 
 import static org.springframework.http.ResponseEntity.*;
 
+@Component
 public class PersonController implements PersonApi {
 
-    private PersonRepository personRepository;
+    private final PersonRepository personRepository;
 
     @Autowired
     public PersonController(PersonRepository personRepository) {

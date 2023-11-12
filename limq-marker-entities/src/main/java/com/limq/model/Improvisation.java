@@ -1,6 +1,16 @@
 package com.limq.model;
 
-import jakarta.persistence.*;
+import jakarta.persistence.CascadeType;
+import jakarta.persistence.Column;
+import jakarta.persistence.Entity;
+import jakarta.persistence.FetchType;
+import jakarta.persistence.GeneratedValue;
+import jakarta.persistence.GenerationType;
+import jakarta.persistence.Id;
+import jakarta.persistence.JoinColumn;
+import jakarta.persistence.OneToMany;
+import jakarta.persistence.OneToOne;
+import jakarta.persistence.Table;
 
 import java.util.List;
 import java.util.Objects;
@@ -11,9 +21,6 @@ public class Improvisation {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-    @ManyToOne(fetch = FetchType.LAZY)
-    @JoinColumn(name = "match_id", updatable = false, insertable = false)
-    private Match match;
     @Column(name = "period")
     private int period;
     @Column(name = "improvisation_number")
@@ -23,7 +30,6 @@ public class Improvisation {
     @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "improvisation_team_left_id", updatable = false)
     private ImprovisationTeam improvisationTeamLeft;
-
     @OneToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "improvisation_team_right_id", updatable = false)
     private ImprovisationTeam improvisationTeamRight;
@@ -42,14 +48,6 @@ public class Improvisation {
 
     public void setId(String id) {
         this.id = id;
-    }
-
-    public Match getMatch() {
-        return match;
-    }
-
-    public void setMatch(Match match) {
-        this.match = match;
     }
 
     public int getPeriod() {
@@ -121,27 +119,16 @@ public class Improvisation {
         if (this == o) return true;
         if (o == null || getClass() != o.getClass()) return false;
         Improvisation that = (Improvisation) o;
-        return period == that.period && improvisationNumber == that.improvisationNumber && isExAequo == that.isExAequo && Objects.equals(id, that.id) && Objects.equals(match, that.match) && improvisationType == that.improvisationType && Objects.equals(improvisationTeamLeft, that.improvisationTeamLeft) && Objects.equals(improvisationTeamRight, that.improvisationTeamRight) && Objects.equals(penaltyList, that.penaltyList) && Objects.equals(winningTeam, that.winningTeam);
+        return period == that.period && improvisationNumber == that.improvisationNumber && isExAequo == that.isExAequo && Objects.equals(id, that.id) && improvisationType == that.improvisationType && Objects.equals(improvisationTeamLeft, that.improvisationTeamLeft) && Objects.equals(improvisationTeamRight, that.improvisationTeamRight) && Objects.equals(penaltyList, that.penaltyList) && Objects.equals(winningTeam, that.winningTeam);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, match, period, improvisationNumber, improvisationType, improvisationTeamLeft, improvisationTeamRight, penaltyList, winningTeam, isExAequo);
+        return Objects.hash(id, period, improvisationNumber, improvisationType, improvisationTeamLeft, improvisationTeamRight, penaltyList, winningTeam, isExAequo);
     }
 
     @Override
     public String toString() {
-        return "Improvisation{" +
-            "id='" + id + '\'' +
-            ", match=" + match +
-            ", period=" + period +
-            ", improvisationNumber=" + improvisationNumber +
-            ", improvisationType=" + improvisationType +
-            ", improvisationTeamLeft=" + improvisationTeamLeft +
-            ", improvisationTeamRight=" + improvisationTeamRight +
-            ", penaltyList=" + penaltyList +
-            ", winningTeam=" + winningTeam +
-            ", isExAequo=" + isExAequo +
-            '}';
+        return "Improvisation{" + "id='" + id + '\'' + ", period=" + period + ", improvisationNumber=" + improvisationNumber + ", improvisationType=" + improvisationType + ", improvisationTeamLeft=" + improvisationTeamLeft + ", improvisationTeamRight=" + improvisationTeamRight + ", penaltyList=" + penaltyList + ", winningTeam=" + winningTeam + ", isExAequo=" + isExAequo + '}';
     }
 }
