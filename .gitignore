@@ -14,5 +14,7 @@ target/**
 *.project
 **/native-libs
 
+mabeaulieu-local-test/**
+
 # For java version control on Ubuntu with jenv
 .java-version
