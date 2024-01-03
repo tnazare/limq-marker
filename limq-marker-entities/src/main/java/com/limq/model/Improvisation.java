@@ -8,6 +8,7 @@ import jakarta.persistence.GeneratedValue;
 import jakarta.persistence.GenerationType;
 import jakarta.persistence.Id;
 import jakarta.persistence.JoinColumn;
+import jakarta.persistence.ManyToOne;
 import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
@@ -25,11 +26,20 @@ public class Improvisation {
     private int improvisationNumber;
     @Column(name = "improvisation_type")
     private ImprovisationType improvisationType;
-    @OneToMany(mappedBy = "improvisation",cascade = CascadeType.ALL, orphanRemoval = true)
-    private List<ImprovisationTeam> improvisationTeams;
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "improvisation_team_left_id", updatable = false)
+    private ImprovisationTeam improvisationTeamLeft;
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "improvisation_team_right_id", updatable = false)
+    private ImprovisationTeam improvisationTeamRight;
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "improvisation_id", updatable = false)
     private List<Penalty> penaltyList;
+    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
+    @JoinColumn(name = "winning_team_id", updatable = false)
+    private ImprovisationTeam winningTeam;
+    @Column(name = "isExAequo")
+    private boolean isExAequo;
 
     public String getId() {
         return id;
@@ -63,12 +73,20 @@ public class Improvisation {
         this.improvisationType = improvisationType;
     }
 
-    public List<ImprovisationTeam> getImprovisationTeams() {
-        return improvisationTeams;
+    public ImprovisationTeam getImprovisationTeamLeft() {
+        return improvisationTeamLeft;
     }
 
-    public void setImprovisationTeams(List<ImprovisationTeam> improvisationTeams) {
-        this.improvisationTeams = improvisationTeams;
+    public void setImprovisationTeamLeft(ImprovisationTeam improvisationTeamLeft) {
+        this.improvisationTeamLeft = improvisationTeamLeft;
+    }
+
+    public ImprovisationTeam getImprovisationTeamRight() {
+        return improvisationTeamRight;
+    }
+
+    public void setImprovisationTeamRight(ImprovisationTeam improvisationTeamRight) {
+        this.improvisationTeamRight = improvisationTeamRight;
     }
 
     public List<Penalty> getPenaltyList() {
@@ -77,6 +95,22 @@ public class Improvisation {
 
     public void setPenaltyList(List<Penalty> penaltyList) {
         this.penaltyList = penaltyList;
+    }
+
+    public ImprovisationTeam getWinningTeam() {
+        return winningTeam;
+    }
+
+    public void setWinningTeam(ImprovisationTeam winningTeam) {
+        this.winningTeam = winningTeam;
+    }
+
+    public boolean isExAequo() {
+        return isExAequo;
+    }
+
+    public void setExAequo(boolean exAequo) {
+        isExAequo = exAequo;
     }
 
     @Override
@@ -88,16 +122,16 @@ public class Improvisation {
             return false;
         }
         Improvisation that = (Improvisation) o;
-        return period == that.period && improvisationNumber == that.improvisationNumber && Objects.equals(id, that.id) && improvisationType == that.improvisationType && Objects.equals(improvisationTeams, that.improvisationTeams) && Objects.equals(penaltyList, that.penaltyList);
+        return period == that.period && improvisationNumber == that.improvisationNumber && isExAequo == that.isExAequo && Objects.equals(id, that.id) && improvisationType == that.improvisationType && Objects.equals(improvisationTeamLeft, that.improvisationTeamLeft) && Objects.equals(improvisationTeamRight, that.improvisationTeamRight) && Objects.equals(penaltyList, that.penaltyList) && Objects.equals(winningTeam, that.winningTeam);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, period, improvisationNumber, improvisationType, improvisationTeams, penaltyList);
+        return Objects.hash(id, period, improvisationNumber, improvisationType, improvisationTeamLeft, improvisationTeamRight, penaltyList, winningTeam, isExAequo);
     }
 
     @Override
     public String toString() {
-        return "Improvisation{" + "id='" + id + '\'' + ", period=" + period + ", improvisationNumber=" + improvisationNumber + ", improvisationType=" + improvisationType + ", improvisationTeamLeft=" + improvisationTeams + ", penaltyList=" + penaltyList  + '}';
+        return "Improvisation{" + "id='" + id + '\'' + ", period=" + period + ", improvisationNumber=" + improvisationNumber + ", improvisationType=" + improvisationType + ", improvisationTeamLeft=" + improvisationTeamLeft + ", improvisationTeamRight=" + improvisationTeamRight + ", penaltyList=" + penaltyList + ", winningTeam=" + winningTeam + ", isExAequo=" + isExAequo + '}';
     }
 }

@@ -79,18 +79,19 @@ public class Penalty {
             return false;
         }
         Penalty penalty = (Penalty) o;
-        return Objects.equals(id, penalty.id) && Objects.equals(team, penalty.team) && Objects.equals(person, penalty.person) && penaltyType == penalty.penaltyType;
+        return Objects.equals(id, penalty.id) && Objects.equals(improvisation, penalty.improvisation) && Objects.equals(team, penalty.team) && Objects.equals(person, penalty.person) && penaltyType == penalty.penaltyType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, team, person, penaltyType);
+        return Objects.hash(id, improvisation, team, person, penaltyType);
     }
 
     @Override
     public String toString() {
         return "Penalty{" +
             "id='" + id + '\'' +
+            ", improvisation=" + improvisation +
             ", team=" + team +
             ", person=" + person +
             ", penaltyType=" + penaltyType +
