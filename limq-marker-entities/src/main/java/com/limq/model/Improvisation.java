@@ -24,8 +24,8 @@ public class Improvisation {
     private int period;
     @Column(name = "improvisation_number")
     private int improvisationNumber;
-    @Column(name = "improvisation_type")
-    private ImprovisationType improvisationType;
+    @Column(name = "nature")
+    private Nature nature;
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "improvisation_team_left_id", updatable = false)
     private ImprovisationTeam improvisationTeamLeft;
@@ -65,12 +65,12 @@ public class Improvisation {
         this.improvisationNumber = improvisationNumber;
     }
 
-    public ImprovisationType getImprovisationType() {
-        return improvisationType;
+    public Nature getNature() {
+        return nature;
     }
 
-    public void setImprovisationType(ImprovisationType improvisationType) {
-        this.improvisationType = improvisationType;
+    public void setNature(Nature nature) {
+        this.nature = nature;
     }
 
     public ImprovisationTeam getImprovisationTeamLeft() {
@@ -122,16 +122,16 @@ public class Improvisation {
             return false;
         }
         Improvisation that = (Improvisation) o;
-        return period == that.period && improvisationNumber == that.improvisationNumber && isExAequo == that.isExAequo && Objects.equals(id, that.id) && improvisationType == that.improvisationType && Objects.equals(improvisationTeamLeft, that.improvisationTeamLeft) && Objects.equals(improvisationTeamRight, that.improvisationTeamRight) && Objects.equals(penaltyList, that.penaltyList) && Objects.equals(winningTeam, that.winningTeam);
+        return period == that.period && improvisationNumber == that.improvisationNumber && isExAequo == that.isExAequo && Objects.equals(id, that.id) && nature == that.nature && Objects.equals(improvisationTeamLeft, that.improvisationTeamLeft) && Objects.equals(improvisationTeamRight, that.improvisationTeamRight) && Objects.equals(penaltyList, that.penaltyList) && Objects.equals(winningTeam, that.winningTeam);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, period, improvisationNumber, improvisationType, improvisationTeamLeft, improvisationTeamRight, penaltyList, winningTeam, isExAequo);
+        return Objects.hash(id, period, improvisationNumber, nature, improvisationTeamLeft, improvisationTeamRight, penaltyList, winningTeam, isExAequo);
     }
 
     @Override
     public String toString() {
-        return "Improvisation{" + "id='" + id + '\'' + ", period=" + period + ", improvisationNumber=" + improvisationNumber + ", improvisationType=" + improvisationType + ", improvisationTeamLeft=" + improvisationTeamLeft + ", improvisationTeamRight=" + improvisationTeamRight + ", penaltyList=" + penaltyList + ", winningTeam=" + winningTeam + ", isExAequo=" + isExAequo + '}';
+        return "Improvisation{" + "id='" + id + '\'' + ", period=" + period + ", improvisationNumber=" + improvisationNumber + ", nature=" + nature + ", improvisationTeamLeft=" + improvisationTeamLeft + ", improvisationTeamRight=" + improvisationTeamRight + ", penaltyList=" + penaltyList + ", winningTeam=" + winningTeam + ", isExAequo=" + isExAequo + '}';
     }
 }
