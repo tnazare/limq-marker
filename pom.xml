@@ -92,6 +92,7 @@
     <build>
         <!-- Controls the jar name to make sure it is constant -->
         <finalName>${project.artifactId}</finalName>
+        <!-- Enable resource filtering for resolving variables in application.yml, such as `@spring.profiles.active@` -->
         <resources>
             <resource>
                 <directory>src/main/resources</directory>
