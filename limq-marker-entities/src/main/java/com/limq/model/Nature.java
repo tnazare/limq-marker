@@ -1,5 +1,5 @@
 package com.limq.model;
 
-public enum ImprovisationType {
+public enum Nature {
     COMPARED, MIXED;
 }
