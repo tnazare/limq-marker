@@ -24,7 +24,7 @@ public class MarkerApplicationSmokeTest {
 
     @Test
     void shouldBeUp() {
-        final String statusUri = "http://localhost:" + port + "/ping";
+        final String statusUri = "http://localhost:" + port + "/monitoring/health";
         ResponseEntity<String> response = restTemplate.getForEntity(statusUri, String.class);
         assertThat(response.getStatusCode()).isEqualTo(HttpStatus.OK);
     }

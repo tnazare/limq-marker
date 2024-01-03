@@ -23,5 +23,5 @@ spring:
 management:
     endpoints:
         web:
-            base-path: /
+            base-path: "/monitoring"
 server.port: 8080
