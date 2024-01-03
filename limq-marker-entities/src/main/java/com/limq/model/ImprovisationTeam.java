@@ -1,14 +1,7 @@
 package com.limq.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -18,10 +11,14 @@ public class ImprovisationTeam {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
     private String id;
-
+    @ManyToOne
+    @JoinColumn(name = "improvisation_id", updatable = false)
+    private Improvisation improvisation;
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "improvisation_team_id", updatable = false)
     private List<Person> improvisationPlayers;
+    @Column(name = "is_winning_team")
+    private boolean isWinningTeam;
 
     public String getId() {
         return id;
@@ -29,6 +26,13 @@ public class ImprovisationTeam {
 
     public void setId(String id) {
         this.id = id;
+    }
+    public Improvisation getImprovisation() {
+        return improvisation;
+    }
+
+    public void setImprovisation(Improvisation improvisation) {
+        this.improvisation = improvisation;
     }
 
     public List<Person> getImprovisationPlayers() {
@@ -39,21 +43,25 @@ public class ImprovisationTeam {
         this.improvisationPlayers = improvisationPlayers;
     }
 
+    public boolean isWinningTeam() {
+        return isWinningTeam;
+    }
+
+    public void setWinningTeam(boolean winningTeam) {
+        this.isWinningTeam = winningTeam;
+    }
+
     @Override
     public boolean equals(Object o) {
-        if (this == o) {
-            return true;
-        }
-        if (o == null || getClass() != o.getClass()) {
-            return false;
-        }
+        if (this == o) return true;
+        if (o == null || getClass() != o.getClass()) return false;
         ImprovisationTeam that = (ImprovisationTeam) o;
-        return Objects.equals(id, that.id) && Objects.equals(improvisationPlayers, that.improvisationPlayers);
+        return isWinningTeam == that.isWinningTeam && Objects.equals(id, that.id) && Objects.equals(improvisationPlayers, that.improvisationPlayers);
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, improvisationPlayers);
+        return Objects.hash(id, improvisationPlayers, isWinningTeam);
     }
 
     @Override
@@ -61,6 +69,7 @@ public class ImprovisationTeam {
         return "ImprovisationTeam{" +
             "id='" + id + '\'' +
             ", improvisationPlayers=" + improvisationPlayers +
+            ", isWinningTeam=" + isWinningTeam +
             '}';
     }
 }
