@@ -1,8 +1,3 @@
 spring:
     flyway:
         enabled: true
-management:
-    endpoints:
-        web:
-            base-path: "/monitoring"
-            exposure.include: '*'
