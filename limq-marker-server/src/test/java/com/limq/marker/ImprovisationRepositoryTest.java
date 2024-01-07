@@ -3,7 +3,6 @@ package com.limq.marker;
 import com.limq.model.Improvisation;
 import com.limq.model.ImprovisationTeam;
 import com.limq.repositories.ImprovisationRepository;
-import com.limq.repositories.ImprovisationTeamRepository;
 import jakarta.transaction.Transactional;
 import org.assertj.core.api.Assertions;
 import org.junit.jupiter.api.Test;
@@ -16,8 +15,6 @@ import java.util.List;
 public class ImprovisationRepositoryTest {
     @Autowired
     private ImprovisationRepository improvisationRepository;
-    @Autowired
-    private ImprovisationTeamRepository improvisationTeamRepository;
 
     @Test
     @Transactional
