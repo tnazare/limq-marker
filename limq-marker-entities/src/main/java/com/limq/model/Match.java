@@ -1,18 +1,8 @@
 package com.limq.model;
 
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Column;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.ManyToOne;
-import jakarta.persistence.OneToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
@@ -25,12 +15,18 @@ public class Match {
     private String id;
     @Column(name = "date")
     private LocalDateTime date;
+
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "improvisation_id", updatable = false)
+    @JoinTable(
+        name = "Match_Host",
+        joinColumns = {@JoinColumn(name = "improvisation_id")},
+        inverseJoinColumns = {@JoinColumn(name = "person_id")})
     private List<Person> hosts;
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "improvisation_id", updatable = false)
-    private List<Person> judges;
+    @JoinTable(
+        name = "Match_Judge",
+        joinColumns = {@JoinColumn(name = "improvisation_team_id")},
+        inverseJoinColumns = {@JoinColumn(name = "person_id")})    private List<Person> judges;
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "referee_id", updatable = false)
     private Person referee;

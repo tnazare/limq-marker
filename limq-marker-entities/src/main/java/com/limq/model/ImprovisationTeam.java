@@ -15,7 +15,10 @@ public class ImprovisationTeam {
     @JoinColumn(name = "improvisation_id", updatable = false)
     private Improvisation improvisation;
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "improvisation_team_id", updatable = false)
+    @JoinTable(
+        name = "ImprovisationTeam_ImprovisationPlayer",
+        joinColumns = {@JoinColumn(name = "improvisation_team_id")},
+        inverseJoinColumns = {@JoinColumn(name = "person_id")})
     private List<Person> improvisationPlayers;
     @Column(name = "is_winning_team")
     private boolean isWinningTeam;
