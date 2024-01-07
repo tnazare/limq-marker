@@ -1,14 +1,7 @@
 package com.limq.model;
 
-import jakarta.persistence.CascadeType;
-import jakarta.persistence.Entity;
-import jakarta.persistence.FetchType;
-import jakarta.persistence.GeneratedValue;
-import jakarta.persistence.GenerationType;
-import jakarta.persistence.Id;
-import jakarta.persistence.JoinColumn;
-import jakarta.persistence.ManyToMany;
-import jakarta.persistence.Table;
+import jakarta.persistence.*;
+
 import java.util.List;
 import java.util.Objects;
 
@@ -20,7 +13,10 @@ public class ImprovisationTeam {
     private String id;
 
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "improvisation_team_id", updatable = false)
+    @JoinTable(
+        name = "ImprovisationTeam_ImprovisationPlayer",
+        joinColumns = {@JoinColumn(name = "improvisation_team_id")},
+        inverseJoinColumns = {@JoinColumn(name = "person_id")})
     private List<Person> improvisationPlayers;
 
     public String getId() {
