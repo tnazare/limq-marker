@@ -6,13 +6,14 @@ import jakarta.persistence.*;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "match")
 public class Match {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @Column(name = "date")
     private LocalDateTime date;
 
@@ -40,11 +41,11 @@ public class Match {
     @JoinColumn(name = "improvisation_id", updatable = false)
     private List<MatchPlayer> matchPlayers;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

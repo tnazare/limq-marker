@@ -4,16 +4,14 @@ import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "improvisation_team")
 public class ImprovisationTeam {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-    @ManyToOne
-    @JoinColumn(name = "improvisation_id", updatable = false)
-    private Improvisation improvisation;
+    private UUID id;
     @ManyToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinTable(
         name = "ImprovisationTeam_ImprovisationPlayer",
@@ -23,19 +21,12 @@ public class ImprovisationTeam {
     @Column(name = "is_winning_team")
     private boolean isWinningTeam;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
-    }
-    public Improvisation getImprovisation() {
-        return improvisation;
-    }
-
-    public void setImprovisation(Improvisation improvisation) {
-        this.improvisation = improvisation;
     }
 
     public List<Person> getImprovisationPlayers() {

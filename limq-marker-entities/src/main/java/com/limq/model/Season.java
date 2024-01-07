@@ -13,13 +13,14 @@ import jakarta.persistence.Table;
 import java.time.LocalDateTime;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "season")
 public class Season {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @Column(name = "start_date")
     private LocalDateTime startDate;
     @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
@@ -29,11 +30,11 @@ public class Season {
     @JoinColumn(name = "improvisation_id", updatable = false)
     private List<Match> matches;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 

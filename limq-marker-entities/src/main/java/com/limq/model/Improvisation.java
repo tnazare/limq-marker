@@ -12,30 +12,30 @@ import jakarta.persistence.OneToMany;
 import jakarta.persistence.Table;
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "improvisation")
 public class Improvisation {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @Column(name = "period")
     private int period;
     @Column(name = "improvisation_number")
     private int improvisationNumber;
     @Column(name = "improvisation_type")
     private ImprovisationType improvisationType;
-    @OneToMany(mappedBy = "improvisation",cascade = CascadeType.ALL, orphanRemoval = true)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<ImprovisationTeam> improvisationTeams;
-    @OneToMany(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "improvisation_id", updatable = false)
+    @OneToMany(cascade = CascadeType.ALL, orphanRemoval = true)
     private List<Penalty> penaltyList;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
@@ -98,6 +98,6 @@ public class Improvisation {
 
     @Override
     public String toString() {
-        return "Improvisation{" + "id='" + id + '\'' + ", period=" + period + ", improvisationNumber=" + improvisationNumber + ", improvisationType=" + improvisationType + ", improvisationTeamLeft=" + improvisationTeams + ", penaltyList=" + penaltyList  + '}';
+        return "Improvisation{" + "id='" + id + '\'' + ", period=" + period + ", improvisationNumber=" + improvisationNumber + ", improvisationType=" + improvisationType + ", improvisationTeams=" + improvisationTeams + ", penaltyList=" + penaltyList  + '}';
     }
 }
