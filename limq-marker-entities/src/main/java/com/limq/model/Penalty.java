@@ -11,16 +11,14 @@ import jakarta.persistence.JoinColumn;
 import jakarta.persistence.ManyToOne;
 import jakarta.persistence.Table;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "penalty")
 public class Penalty {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
-    @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
-    @JoinColumn(name = "improvisation_id", updatable = false)
-    private Improvisation improvisation;
+    private UUID id;
     @ManyToOne(cascade = CascadeType.REMOVE, fetch = FetchType.LAZY)
     @JoinColumn(name = "team_id", updatable = false)
     private Team team;
@@ -30,20 +28,12 @@ public class Penalty {
     @Column(name = "penalty_type")
     private PenaltyType penaltyType;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
-    }
-
-    public Improvisation getImprovisation() {
-        return improvisation;
-    }
-
-    public void setImprovisation(Improvisation improvisation) {
-        this.improvisation = improvisation;
     }
 
     public Team getTeam() {
@@ -79,19 +69,18 @@ public class Penalty {
             return false;
         }
         Penalty penalty = (Penalty) o;
-        return Objects.equals(id, penalty.id) && Objects.equals(improvisation, penalty.improvisation) && Objects.equals(team, penalty.team) && Objects.equals(person, penalty.person) && penaltyType == penalty.penaltyType;
+        return Objects.equals(id, penalty.id) && Objects.equals(team, penalty.team) && Objects.equals(person, penalty.person) && penaltyType == penalty.penaltyType;
     }
 
     @Override
     public int hashCode() {
-        return Objects.hash(id, improvisation, team, person, penaltyType);
+        return Objects.hash(id, team, person, penaltyType);
     }
 
     @Override
     public String toString() {
         return "Penalty{" +
             "id='" + id + '\'' +
-            ", improvisation=" + improvisation +
             ", team=" + team +
             ", person=" + person +
             ", penaltyType=" + penaltyType +

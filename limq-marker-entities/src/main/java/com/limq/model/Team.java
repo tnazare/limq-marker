@@ -4,13 +4,14 @@ import jakarta.persistence.*;
 
 import java.util.List;
 import java.util.Objects;
+import java.util.UUID;
 
 @Entity
 @Table(name = "team")
 public class Team {
     @Id
     @GeneratedValue(strategy = GenerationType.UUID)
-    private String id;
+    private UUID id;
     @Column(name = "color")
     private TeamColor color;
     @Column(name = "name")
@@ -22,11 +23,11 @@ public class Team {
         inverseJoinColumns = {@JoinColumn(name = "person_id")})
     private List<Person> members;
 
-    public String getId() {
+    public UUID getId() {
         return id;
     }
 
-    public void setId(String id) {
+    public void setId(UUID id) {
         this.id = id;
     }
 
