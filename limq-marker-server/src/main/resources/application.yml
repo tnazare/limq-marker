@@ -16,7 +16,7 @@ spring:
             mode: always
             continue-on-error: 'true'
     flyway:
-        enabled: false
+        enabled: true
         schemas: limq
     profiles:
         active: '@spring.profiles.active@'
