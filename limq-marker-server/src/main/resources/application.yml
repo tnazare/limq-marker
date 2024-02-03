@@ -5,7 +5,6 @@ spring:
             ddl-auto: create
         properties:
             hibernate:
-                dialect: org.hibernate.dialect.PostgreSQLDialect
                 format_sql: 'true'
                 default_schema: limq
     datasource:
@@ -17,6 +16,7 @@ spring:
             mode: always
             continue-on-error: 'true'
     flyway:
+        enabled: true
         schemas: limq
     profiles:
         active: '@spring.profiles.active@'
