@@ -1,5 +1,19 @@
 package com.limq.model;
 
 public enum PenaltyType {
-    OTHER
+    FAILURE_TO_COMPLY_TO_THE_CARD("Non-respect de la carte"),
+    GAME_DELAY("Retard de jeu"),
+    HAMMING("Cabotinage"),
+    ILLEGAL_PROCEDURE("Procédure illégale"),
+    OTHER("To be added");
+
+    private final String description;
+
+    PenaltyType(String description) {
+        this.description = description;
+    }
+
+    public String getDescription() {
+        return description;
+    }
 }
